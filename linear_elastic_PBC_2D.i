@@ -1,3 +1,5 @@
+#---- linear elastic 2d plane stress ----#
+
 [GlobalParams]
   displacements = 'disp_x disp_y'
   large_kinematics = false
@@ -32,7 +34,7 @@
     ny = 256
     xmax = 1
     ymax = 1
-    elem_type = QUAD8
+    elem_type = QUAD4
                 show_info=true
                 output=true
   []
@@ -197,6 +199,7 @@
   [../]
 []
 
+
 [AuxKernels]
   [./stress_xx]
     type = RankTwoAux
@@ -249,6 +252,7 @@
   [../]
 []
 
+
 # 0.0002 vol avgd strain in x-dir
 [UserObjects]
   [homogenization]
@@ -266,49 +270,42 @@
     variable = 'stress_xx'
     sort_by = id
     outputs = csv
-    execute_on = 'INITIAL LINEAR NONLINEAR'
   []
   [stress_yy]
     type = ElementValueSampler
     variable = 'stress_yy'
     sort_by = id
     outputs = csv
-    execute_on = 'INITIAL LINEAR NONLINEAR'
   []
   [stress_xy]
     type = ElementValueSampler
     variable = 'stress_xy'
     sort_by = id
     outputs = csv
-    execute_on = 'INITIAL LINEAR NONLINEAR'
   []
   [strain_xx]
     type = ElementValueSampler
-  C:\Users\jhur6\OneDrive\Documents\AFRL-GT_Project_Files\AFRL_Project\code\stress_yy_test.png  variable = 'strain_xx'
+    variable = 'strain_xx'
     sort_by = id
     outputs = csv
-    execute_on = 'INITIAL LINEAR NONLINEAR'
   []
   [strain_yy]
     type = ElementValueSampler
     variable = 'strain_yy'
     sort_by = id
     outputs = csv
-    execute_on = 'INITIAL LINEAR NONLINEAR'
   []
   [strain_xy]
     type = ElementValueSampler
     variable = 'strain_xy'
     sort_by = id
     outputs = csv
-    execute_on = 'INITIAL LINEAR NONLINEAR'
   []
   [maxprincipal]
     type = ElementValueSampler
     variable = 'maxprincipal'
     sort_by = id
     outputs = csv
-    execute_on = ' INITIAL LINEAR NONLINEAR'
   []
 []
 
@@ -329,8 +326,8 @@
     reuse_preconditioner_max_linear_its = 10
 
     l_max_its = 100
-    l_tol = 1e-10
-    nl_rel_tol = 1e-8
+    l_tol = 1e-4
+    nl_rel_tol = 1e-12
     nl_max_its = 10
 
     automatic_scaling = true
@@ -349,3 +346,5 @@
 [Debug]
   show_material_props = true
 []
+
+
