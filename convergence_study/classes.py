@@ -26,6 +26,7 @@ def mle(x_dat, percentile):
     params = genextreme.fit(x_dat)
     return params
 
+# mle is unstable with really large rvs
 def scale(x):
     inp_scaler = StandardScaler()
     x_scaled = inp_scaler.fit_transform(x)
@@ -38,6 +39,8 @@ def unscale(x, data_mean, data_std):
     x_unscaled=(x * data_std) + data_mean
     return x_unscaled
 
+# this is to interleave my for loop for progressive mle b/c
+# my dataset gets extremely large and the mle starts getting really slow
 def drange(start, stop, step):
     while start < stop:
             yield start
