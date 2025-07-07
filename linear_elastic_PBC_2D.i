@@ -1,4 +1,5 @@
 #---- linear elastic 2d plane stress ----#
+# note: by default, moose will predict plane strain
 
 [GlobalParams]
   displacements = 'disp_x disp_y'
