@@ -1,4 +1,4 @@
-#---- linear elastic 2d plane stress ----#
+#---- linear elastic 2d plane strain----#
 # note: by default, moose will predict plane strain
 
 [GlobalParams]
