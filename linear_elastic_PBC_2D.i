@@ -327,8 +327,8 @@
     reuse_preconditioner_max_linear_its = 10
 
     l_max_its = 100
-    l_tol = 1e-4
-    nl_rel_tol = 1e-12
+    l_tol = 1e-12
+    nl_rel_tol = 1e-4
     nl_max_its = 10
 
     automatic_scaling = true
