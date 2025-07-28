@@ -3,7 +3,7 @@ import numpy as np
 from scipy.stats import genextreme
 import matplotlib.pyplot as plt
 import pandas as pd
-from classes import *
+from Helpers import *
 from rich.progress import track
 
 patt='FCCC50'
