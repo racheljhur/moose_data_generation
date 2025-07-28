@@ -1,9 +1,9 @@
-''' determining truncation threshold using evds '''
+''' Determining truncation threshold using Gumbel dist '''
 import numpy as np
 from scipy.stats import genextreme
 import matplotlib.pyplot as plt
 import pandas as pd
-from classes import *
+from helpers import *
 from rich.progress import track
 
 # do this over the 15 classes only.
