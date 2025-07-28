@@ -23,16 +23,14 @@ structs = [
     ('vf_50/FCCC50_650.npy', 'inp_files/inp_FCCC50', 'FCCC50')
 ]
 
-# Constants
+# Domain Size
 size = (256, 256)
+
+# Engineering Constants for Matrix Phase
 E0 = 3.45e9
 P0 = 0.35
-# E1 = 276e9
-# E2 = 26e9
-# G12 = 20.7e9
-# G23 = 7.55e9
-# nu1 = 0.292
 
+# Engineering Constants for Fiber Phase
 E1 = 6.50e9
 E2 = 6.49e9
 E3 = 9.99e10
@@ -47,6 +45,7 @@ nu21 = nu12 * E2/E1
 nu32 = nu23 * E3/E2
 nu31 = nu13 * E3/E1
 
+# Based on Orthotropic Fill on MOOSE
 k = 1 - nu12*nu21 - nu23*nu32 - nu31*nu13 - nu12*nu23*nu31 - nu21*nu32*nu13
 
 C1111 = E1*(1-nu23*nu32)/k
@@ -70,8 +69,8 @@ C1212 = G23
 # print(C3131)
 # print(C1212)
 
-# read the template file once
-with open("sve_mp_stress.i", "r") as f:
+# Read the template file once
+with open("linear_elastic_PBC_2D.i", "r") as f:
     base_template = f.read()
 
 # Process each .npy file and structure
